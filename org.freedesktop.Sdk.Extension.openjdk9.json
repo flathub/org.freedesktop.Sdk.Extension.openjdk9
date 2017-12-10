@@ -202,6 +202,36 @@
                     "path": "org.freedesktop.Sdk.Extension.openjdk9.appdata.xml"
                 }
             ]
+        },
+        {
+            "name": "maven",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install-maven.sh"
+            ],
+            "sources": [
+                {
+                    "type": "script",
+                    "commands": [
+                        "mkdir -p /app/share/maven",
+                        "mkdir -p /app/etc/maven",
+                        "tar xvf maven.tar.gz -C /app/share/maven --strip-components=1",
+                        "ln -sf /app/share/maven/bin/mvn /app/bin/mvn",
+                        "ln -sf /app/share/maven/bin/mvnDebug /app/bin/mvnDebug",
+                        "ln -sf /app/share/maven/bin/mvnyjp /app/bin/mvnyjp",
+                        "ln -sf /app/share/maven/conf/logging /app/etc/maven/logging",
+                        "ln -sf /app/share/maven/conf/settings.xml /app/etc/maven/setting.xml"
+                    ],
+                    "dest-filename": "install-maven.sh"
+                },
+                {
+                    "type": "extra-data",
+                    "filename": "maven.tar.gz",
+                    "url": "http://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz",
+                    "sha256": "707b1f6e390a65bde4af4cdaf2a24d45fc19a6ded00fff02e91626e3e42ceaff",
+                    "size": 8738691
+                }
+            ]
         }
     ]
 }

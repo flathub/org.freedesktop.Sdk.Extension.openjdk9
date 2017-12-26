@@ -210,6 +210,7 @@
               "mkdir -p $FLATPAK_DEST/share/maven",
               "mkdir -p $FLATPAK_DEST/etc/maven",
               "cp -a * $FLATPAK_DEST/share/maven/",
+              "rm -rf $FLATPAK_DEST/share/maven/lib/jansi-native",
               "ln -sf $FLATPAK_DEST/share/maven/bin/mvn $FLATPAK_DEST/bin/mvn",
               "ln -sf $FLATPAK_DEST/share/maven/bin/mvnDebug $FLATPAK_DEST/bin/mvnDebug",
               "ln -sf $FLATPAK_DEST/share/maven/bin/mvnyjp $FLATPAK_DEST/bin/mvnyjp",

@@ -91,7 +91,7 @@
                 "tar xvf data.tar.xz",
                 "mkdir -p $FLATPAK_DEST/bin-java",
                 "cp -dr usr/lib/jvm/java-8-openjdk-*/* $FLATPAK_DEST/bin-java",
-                "if [ -d $FLATPAK_DEST/bin-java/jre/lib/arm/client/ ]; then cp -dr $FLATPAK_DEST/bin-java/jre/lib/arm/client/ $FLATPAK_DEST/bin-java/jre/lib/arm/server/; fi"
+                "if [ -d $FLATPAK_DEST/bin-java/jre/lib/arm/client ]; then cp -dlr $FLATPAK_DEST/bin-java/jre/lib/arm/client $FLATPAK_DEST/bin-java/jre/lib/arm/server; fi"
             ]
         },
         {

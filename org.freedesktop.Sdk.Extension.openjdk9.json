@@ -149,10 +149,14 @@
                     "type": "archive",
                     "url": "https://src.fedoraproject.org/repo/pkgs/java-9-openjdk/jdk9-jdk9-jdk-9+181.tar.xz/sha512/dc9b20538d4d08e1ecdc7764dad1e3b308b62ba6cce7b78c754444f5b48598a73c3e64728871c9129bee51e4964daf29eaf331e89b2b06801188d562c8887940/jdk9-jdk9-jdk-9+181.tar.xz",
                     "sha256": "40e494fbf6df072352dd02c584364855b85b08ef7d4367c920cc13eb9f782b50"
-                } ,
+                },
                 {
                     "type": "patch",
                     "path": "aarch64BuildFailure.patch"
+                },
+                {
+                    "type": "file",
+                    "path": "cacerts"
                 },
                 {
                     "type": "shell",
@@ -160,6 +164,9 @@
                         "chmod a+x configure"
                     ]
                 }
+            ],
+            "post-install": [
+                "mv cacerts /usr/lib/sdk/openjdk9/jvm/openjdk-9/jre/lib/security/cacerts"
             ]
         },
         {

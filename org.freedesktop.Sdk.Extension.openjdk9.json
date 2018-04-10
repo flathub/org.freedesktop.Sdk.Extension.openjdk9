@@ -166,6 +166,7 @@
                 }
             ],
             "post-install": [
+                "mkdir -p /usr/lib/sdk/openjdk9/jvm/openjdk-9/jre/lib/security/",
                 "mv cacerts /usr/lib/sdk/openjdk9/jvm/openjdk-9/jre/lib/security/cacerts"
             ]
         },

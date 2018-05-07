@@ -181,7 +181,7 @@
                     "commands": [
                         "mkdir -p /app/jdk/",
                         "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9",
-                        "cp -ra lib conf bin /app/jre/",
+                        "cp -ra lib conf bin /app/jdk/",
                         "rm /app/jdk/lib/src.zip"
                     ],
                     "dest-filename": "installjdk.sh"

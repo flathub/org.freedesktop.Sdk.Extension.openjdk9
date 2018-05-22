@@ -179,6 +179,16 @@
                 {
                     "type": "script",
                     "commands": [
+                        "mkdir -p /app/jdk/",
+                        "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9",
+                        "cp -ra lib conf bin /app/jdk/",
+                        "rm /app/jdk/lib/src.zip"
+                    ],
+                    "dest-filename": "installjdk.sh"
+                },
+                {
+                    "type": "script",
+                    "commands": [
                         "export PATH=$PATH:/usr/lib/sdk/openjdk9/bin"
                     ],
                     "dest-filename": "enable.sh"
@@ -186,7 +196,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "cp enable.sh install.sh /usr/lib/sdk/openjdk9/"
+                "cp enable.sh install.sh installjdk.sh /usr/lib/sdk/openjdk9/"
             ]
         },
         {

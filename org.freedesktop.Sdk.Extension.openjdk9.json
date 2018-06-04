@@ -2,115 +2,76 @@
     "id": "org.freedesktop.Sdk.Extension.openjdk9",
     "branch": "1.6",
     "runtime": "org.freedesktop.Sdk",
+    "runtime-version": "1.6",
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "1.6",
-    "sdk-extensions": [],
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.openjdk9"
+    ],
     "separate-locales": false,
     "appstream-compose": false,
-    "cleanup": [ "/share/info", "/share/man" ],
-    "build-options" : {
+    "cleanup": [
+        "/share/info",
+        "/share/man"
+    ],
+    "build-options": {
         "no-debuginfo": true,
         "strip": true,
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
         "prefix": "/usr/lib/sdk/openjdk9",
         "env": {
-            "PATH": "/usr/lib/sdk/openjdk9/bin-java/extra-bin:/app/bin:/usr/bin",
             "V": "1"
         }
     },
     "modules": [
         {
-            /* We're bootstrapping from the debian binaries of OpenJDK 8, because they have builds for all arches */
-            "name": "bin-java",
-            "cleanup": [ "*" ],
+            "name": "bootstrap",
+            "cleanup": [
+                "*"
+            ],
             "buildsystem": "simple",
             "sources": [
                 {
                     "type": "file",
-                    "only-arches": ["i386"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170824T035401Z/pool/main/o/openjdk-8/openjdk-8-jdk-headless_8u144-b01-1_i386.deb",
-                    "dest-filename": "openjdk-8-jdk-headless.deb",
-                    "sha256": "f649cb6d369e3df9637b29f36f5ed638aba61d8af09c6799d38b5cebbb5644b8"
+                    "only-arches": [
+                        "i386"
+                    ],
+                    "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.i686.tar.bz2",
+                    "dest-filename": "java-openjdk.tar.bz2",
+                    "sha512": "7a864b3852ec40fd7d9804b682d41f83d422269075e29948a8cdd0b344785a314f67da2ea093d5fd77eb2888fe2916b8514dda78f956c56dd00c361fed35e9c1"
                 },
                 {
                     "type": "file",
-                    "only-arches": ["i386"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170824T035401Z/pool/main/o/openjdk-8/openjdk-8-jre-headless_8u144-b01-1_i386.deb",
-                    "dest-filename": "openjdk-8-jre-headless.deb",
-                    "sha256": "fe5706efca245f0c99f28a4166898043582dcd1af61b0c57ecdc2e08d076aa19"
+                    "only-arches": [
+                        "x86_64"
+                    ],
+                    "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.x86_64.tar.bz2",
+                    "dest-filename": "java-openjdk.tar.bz2",
+                    "sha512": "72b3a51a65398e9d60c379b1525bfda66b4448694312d0be64c7a78b6572738993e323d4fed7f2d7150aac3ee7e08b522bb205888038ba6916888799269d53b1"
                 },
                 {
                     "type": "file",
-                    "only-arches": ["aarch64"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170824T035401Z/pool/main/o/openjdk-8/openjdk-8-jdk-headless_8u144-b01-1_arm64.deb",
-                    "dest-filename": "openjdk-8-jdk-headless.deb",
-                    "sha256": "c01b7394d3bf6a779ed297ff8e850fab3bb21007f8c5aafc0c963ddacf13d2a3"
+                    "only-arches": [
+                        "arm"
+                    ],
+                    "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.armv7hl.tar.bz2",
+                    "dest-filename": "java-openjdk.tar.bz2",
+                    "sha512": "e70090e4cca70b5796bbb64415d835ccbbd29f5601182419f8c88692e1bf5d8781421980f9fb60820936a2c2ce56557497b02cbe7b6cef0cda9bc59054dae494"
                 },
                 {
                     "type": "file",
-                    "only-arches": ["aarch64"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170824T035401Z/pool/main/o/openjdk-8/openjdk-8-jre-headless_8u144-b01-1_arm64.deb",
-                    "dest-filename": "openjdk-8-jre-headless.deb",
-                    "sha256": "07e8dfcbab4e005b3d91203854562898142fa3bb45e3d306cfbafe71e8971478"
-                },
-                {
-                    "type": "file",
-                    "only-arches": ["arm"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170826T213145Z/pool/main/o/openjdk-8/openjdk-8-jdk-headless_8u144-b01-1_armhf.deb",
-                    "dest-filename": "openjdk-8-jdk-headless.deb",
-                    "sha256": "9def80f9b513a82ef427d595b651f7ce9eb37dc621b1925dc2f3f0aa94734ff3"
-                },
-                {
-                    "type": "file",
-                    "only-arches": ["arm"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170826T213145Z/pool/main/o/openjdk-8/openjdk-8-jre-headless_8u144-b01-1_armhf.deb",
-                    "dest-filename": "openjdk-8-jre-headless.deb",
-                    "sha256": "f93a6d5e3fafc48cee1b006eed51148c9f0f9a0b4a3d0c9c3414b769a38a56fd"
-                },
-                {
-                    "type": "file",
-                    "only-arches": ["x86_64"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170824T160430Z/pool/main/o/openjdk-8/openjdk-8-jdk-headless_8u144-b01-1_amd64.deb",
-                    "dest-filename": "openjdk-8-jdk-headless.deb",
-                    "sha256": "23cde9e21132e6287b772b13b6dcd44183da6d01a3ef177030439ba855f0a73a"
-                },
-                {
-                    "type": "file",
-                    "only-arches": ["x86_64"],
-                    "url": "http://snapshot.debian.org/archive/debian/20170824T160430Z/pool/main/o/openjdk-8/openjdk-8-jre-headless_8u144-b01-1_amd64.deb",
-                    "dest-filename": "openjdk-8-jre-headless.deb",
-                    "sha256": "0e2fb572fa13a02df95fdfa2f9e004072c094ded519d57f7996fb984b95b2ca6"
+                    "only-arches": [
+                        "aarch64"
+                    ],
+                    "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.aarch64.tar.bz2",
+                    "dest-filename": "java-openjdk.tar.bz2",
+                    "sha512": "b6f077ea490abb37b0a967874c67961b43c6aaa58ce3a92fe688be9d7a662a6204869952e44837ae979fce3b64fdf6d414b0f2dd41371a81776274e7fb2ced89"
                 }
             ],
             "build-commands": [
-                "ar vx openjdk-8-jre-headless.deb",
-                "tar xvf data.tar.xz",
-                "ar vx openjdk-8-jdk-headless.deb",
-                "tar xvf data.tar.xz",
-                "mkdir -p $FLATPAK_DEST/bin-java",
-                "cp -dr usr/lib/jvm/java-8-openjdk-*/* $FLATPAK_DEST/bin-java",
-                "if [ -d $FLATPAK_DEST/bin-java/jre/lib/arm/client ]; then cp -dlr $FLATPAK_DEST/bin-java/jre/lib/arm/client $FLATPAK_DEST/bin-java/jre/lib/arm/server; fi"
-            ]
-        },
-        {
-            "name": "fixup-make",
-            "cleanup": [ "*" ],
-            "sources": [
-                {
-                    "type": "script",
-                    "dest-filename": "make.sh",
-                    "commands": [
-                        "ln -sf /proc/self/fd /dev/",
-                        '/usr/bin/make "$@"'
-                    ]
-                }
-            ],
-            "buildsystem": "simple",
-            "build-commands": [
-                "export",
-                "install -D make.sh $FLATPAK_DEST/bin-java/extra-bin/make"
+                "tar xf java-openjdk.tar.bz2",
+                "mkdir -p $FLATPAK_DEST/bootstrap-java",
+                "cp -dr usr/lib/jvm/java-*/* $FLATPAK_DEST/bootstrap-java",
+                "ln -sf /proc/self/fd /dev/"
             ]
         },
         {
@@ -118,41 +79,42 @@
             "buildsystem": "autotools",
             "no-parallel-make": true,
             "config-opts": [
-                "--with-boot-jdk=/usr/lib/sdk/openjdk9/bin-java",
+                "--with-boot-jdk=/usr/lib/sdk/openjdk9/bootstrap-java",
                 "--with-jvm-variants=server",
-                "--with-version-build=181",
+                "--with-version-build=12",
                 "--with-version-pre=",
                 "--with-version-opt=",
                 "--with-debug-level=release",
                 "--with-native-debug-symbols=internal",
+                "--enable-unlimited-crypto",
                 "--with-zlib=system",
                 "--with-libjpeg=system",
                 "--with-giflib=system",
                 "--with-libpng=system",
                 "--with-lcms=system",
                 "--with-stdc++lib=dynamic",
-                "--with-extra-cxxflags=-Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse",
-                "--with-extra-cflags=-fstack-protector-strong -Wno-error -std=gnu++98  -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive",
+                "--with-extra-cxxflags=-O2 -g -Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse",
+                "--with-extra-cflags=-O2 -g -fstack-protector-strong -Wno-error -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive",
+                "--with-extra-ldflags=-Wl,-z,relro -Wl,-z,now",
                 "--disable-javac-server",
-                "--disable-warnings-as-errors",
-                "--disable-full-docs"
+                "--disable-warnings-as-errors"
             ],
             "make-args": [
                 "JAVAC_FLAGS=-g",
                 "LOG=trace",
                 "WARNINGS_ARE_ERRORS=-Wno-error",
                 "CFLAGS_WARNINGS_ARE_ERRORS=-Wno-error",
-                "product-images"
+                "images"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://src.fedoraproject.org/repo/pkgs/java-9-openjdk/jdk9-jdk9-jdk-9+181.tar.xz/sha512/dc9b20538d4d08e1ecdc7764dad1e3b308b62ba6cce7b78c754444f5b48598a73c3e64728871c9129bee51e4964daf29eaf331e89b2b06801188d562c8887940/jdk9-jdk9-jdk-9+181.tar.xz",
-                    "sha256": "40e494fbf6df072352dd02c584364855b85b08ef7d4367c920cc13eb9f782b50"
-                } ,
+                    "url": "https://src.fedoraproject.org/repo/pkgs/java-9-openjdk/jdk-updates-jdk9u-jdk-9.0.4+12.tar.xz/sha512/73e1d2a40e47bc4856d07b198e81b1215867f83fa74eb471eb77fd8fe5f8c133c12cf9b1c588e02e8845e0d5480c56c4f26ce0aef666557a04aca7c3200628ca/jdk-updates-jdk9u-jdk-9.0.4+12.tar.xz",
+                    "sha512": "73e1d2a40e47bc4856d07b198e81b1215867f83fa74eb471eb77fd8fe5f8c133c12cf9b1c588e02e8845e0d5480c56c4f26ce0aef666557a04aca7c3200628ca"
+                },
                 {
                     "type": "patch",
-                    "path": "aarch64BuildFailure.patch"
+                    "path": "JDK-8200556-aarch64-slowdebug-crash.patch"
                 },
                 {
                     "type": "shell",
@@ -169,10 +131,10 @@
                     "type": "script",
                     "commands": [
                         "mkdir -p /app/jre/bin",
-                        "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9",
-                        "cp -ra lib conf /app/jre/",
-                        "rm /app/jre/lib/src.zip",
-                        "cp -ra bin/java  /app/jre/bin"
+                        "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9.0.4",
+                        "cp -ra conf lib /app/jre/",
+                        "rm /app/jre/lib/src.zip /app/jre/lib/ct.sym",
+                        "cp -ra bin/{java,jjs,keytool,orbd,pack200,rmid,rmiregistry,servertool,tnameserv,unpack200} /app/jre/bin"
                     ],
                     "dest-filename": "install.sh"
                 },
@@ -180,9 +142,8 @@
                     "type": "script",
                     "commands": [
                         "mkdir -p /app/jdk/",
-                        "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9",
-                        "cp -ra lib conf bin /app/jdk/",
-                        "rm /app/jdk/lib/src.zip"
+                        "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9.0.4",
+                        "cp -ra bin conf include jmods lib /app/jdk/"
                     ],
                     "dest-filename": "installjdk.sh"
                 },

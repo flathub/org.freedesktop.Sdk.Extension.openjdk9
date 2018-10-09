@@ -6,7 +6,6 @@
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.openjdk9"
     ],
     "separate-locales": false,
     "appstream-compose": false,
@@ -142,7 +141,7 @@
                     "commands": [
                         "mkdir -p /app/jdk/",
                         "cd /usr/lib/sdk/openjdk9/jvm/openjdk-9",
-                        "cp -ra bin conf include jmods lib /app/jdk/"
+                        "cp -ra bin conf include lib /app/jdk/"
                     ],
                     "dest-filename": "installjdk.sh"
                 },

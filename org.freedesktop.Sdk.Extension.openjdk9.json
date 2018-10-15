@@ -5,8 +5,7 @@
     "runtime-version": "18.08",
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
-    "sdk-extensions": [
-    ],
+    "sdk-extensions": [],
     "separate-locales": false,
     "appstream-compose": false,
     "cleanup": [
@@ -24,10 +23,10 @@
     "modules": [
         {
             "name": "bootstrap",
+            "buildsystem": "simple",
             "cleanup": [
                 "*"
             ],
-            "buildsystem": "simple",
             "sources": [
                 {
                     "type": "file",
@@ -67,9 +66,8 @@
                 }
             ],
             "build-commands": [
-                "tar xf java-openjdk.tar.bz2",
                 "mkdir -p $FLATPAK_DEST/bootstrap-java",
-                "cp -dr usr/lib/jvm/java-*/* $FLATPAK_DEST/bootstrap-java"
+                "tar xf java-openjdk.tar.bz2 --strip-components=4 --directory=$FLATPAK_DEST/bootstrap-java"
             ]
         },
         {
@@ -123,7 +121,29 @@
             ]
         },
         {
+            "name": "maven",
+            "buildsystem": "simple",
+            "cleanup": [
+                "*.cmd",
+                "/maven/lib/jansi-native/*"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "http://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz",
+                    "dest-filename": "apache-maven-bin.tar.gz",
+                    "sha512": "2a803f578f341e164f6753e410413d16ab60fabe31dc491d1fe35c984a5cce696bc71f57757d4538fe7738be04065a216f3ebad4ef7e0ce1bb4c51bc36d6be86"
+                }
+            ],
+            "build-commands": [
+                "mkdir -p $FLATPAK_DEST/maven",
+                "tar xf apache-maven-bin.tar.gz --strip-components=1 --directory=$FLATPAK_DEST/maven",
+                "ln -s $FLATPAK_DEST/maven/bin/mvn $FLATPAK_DEST/maven/bin/mvnDebug $FLATPAK_DEST/bin"
+            ]
+        },
+        {
             "name": "scripts",
+            "buildsystem": "simple",
             "sources": [
                 {
                     "type": "script",
@@ -148,12 +168,12 @@
                 {
                     "type": "script",
                     "commands": [
+                        "export JAVA_HOME=/usr/lib/sdk/openjdk9/jvm/openjdk-9",
                         "export PATH=$PATH:/usr/lib/sdk/openjdk9/bin"
                     ],
                     "dest-filename": "enable.sh"
                 }
             ],
-            "buildsystem": "simple",
             "build-commands": [
                 "(cd /usr/lib/sdk/openjdk9/jvm && ln -s openjdk-9.0.4 openjdk-9)",
                 "cp enable.sh install.sh installjdk.sh /usr/lib/sdk/openjdk9/"

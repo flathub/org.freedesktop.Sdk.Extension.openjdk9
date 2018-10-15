@@ -192,6 +192,28 @@
                     "path": "org.freedesktop.Sdk.Extension.openjdk9.appdata.xml"
                 }
             ]
+        },
+        {
+            "name": "maven",
+            "buildsystem": "simple",
+            "build-commands": [
+              "mkdir -p $FLATPAK_DEST/share/maven",
+              "mkdir -p $FLATPAK_DEST/etc/maven",
+              "cp -a * $FLATPAK_DEST/share/maven/",
+              "rm -rf $FLATPAK_DEST/share/maven/lib/jansi-native",
+              "ln -sf $FLATPAK_DEST/share/maven/bin/mvn $FLATPAK_DEST/bin/mvn",
+              "ln -sf $FLATPAK_DEST/share/maven/bin/mvnDebug $FLATPAK_DEST/bin/mvnDebug",
+              "ln -sf $FLATPAK_DEST/share/maven/bin/mvnyjp $FLATPAK_DEST/bin/mvnyjp",
+              "ln -sf $FLATPAK_DEST/share/maven/conf/logging $FLATPAK_DEST/etc/maven/logging",
+              "ln -sf $FLATPAK_DEST/share/maven/conf/settings.xml $FLATPAK_DEST/etc/maven/setting.xml"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz",
+                    "sha256": "707b1f6e390a65bde4af4cdaf2a24d45fc19a6ded00fff02e91626e3e42ceaff"
+                }
+            ]
         }
     ]
 }

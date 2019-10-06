@@ -35,7 +35,7 @@
                     ],
                     "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.i686.tar.bz2",
                     "dest-filename": "java-openjdk.tar.bz2",
-                    "sha512": "7a864b3852ec40fd7d9804b682d41f83d422269075e29948a8cdd0b344785a314f67da2ea093d5fd77eb2888fe2916b8514dda78f956c56dd00c361fed35e9c1"
+                    "sha512": "5aa970aaabdf6d6028b48e835d481fdf5265ff3fb6790f37fc4f748037b9ae37d70cc6c25b7f5d222e7c84dd2748ea626e66303aa9430eb2077ba5fb1d8f4fd6"
                 },
                 {
                     "type": "file",
@@ -44,7 +44,7 @@
                     ],
                     "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.x86_64.tar.bz2",
                     "dest-filename": "java-openjdk.tar.bz2",
-                    "sha512": "72b3a51a65398e9d60c379b1525bfda66b4448694312d0be64c7a78b6572738993e323d4fed7f2d7150aac3ee7e08b522bb205888038ba6916888799269d53b1"
+                    "sha512": "e139b46e2e318f75627886a1ad8b14ae3d23acda310e2e596b70c57df64b084c7f2c428f9912cff24105d7262c8371a6339dc25ae97d5a2502ba7fcb28e39d27"
                 },
                 {
                     "type": "file",
@@ -53,7 +53,7 @@
                     ],
                     "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.armv7hl.tar.bz2",
                     "dest-filename": "java-openjdk.tar.bz2",
-                    "sha512": "e70090e4cca70b5796bbb64415d835ccbbd29f5601182419f8c88692e1bf5d8781421980f9fb60820936a2c2ce56557497b02cbe7b6cef0cda9bc59054dae494"
+                    "sha512": "2855169678f5b300fda14d520bd73aeef9d8a95a9f2cb38317856e98547154348f31bae9b6923eba7428d0d7d922fe823bbaba908c32a507d0a27f6b487c7a72"
                 },
                 {
                     "type": "file",
@@ -62,7 +62,7 @@
                     ],
                     "url": "https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-9.0.4.11-6.fc28.aarch64.tar.bz2",
                     "dest-filename": "java-openjdk.tar.bz2",
-                    "sha512": "b6f077ea490abb37b0a967874c67961b43c6aaa58ce3a92fe688be9d7a662a6204869952e44837ae979fce3b64fdf6d414b0f2dd41371a81776274e7fb2ced89"
+                    "sha512": "31d926b707683a66bd6bf2c709b3e4694ea8dc4d305a3e13a2e35b0e6112393fc2c4f461f211e8d3d266c7d6f15f3f34e6c58e439e8021e6ac2fbc0bcdb8319c"
                 }
             ],
             "build-commands": [
